@@ -1,0 +1,78 @@
+<style>
+      
+    #countdown {
+        font-size: 36px;
+        font-weight: bold;
+        color: #d73030;
+        background-color: rgb(216, 216, 243);
+        text-align: center;
+      }
+    h2{
+        align-items: center;
+        text-align: center;
+        color: black;
+        background-color: rgb(211, 183, 237);
+      }
+      .image-strip {
+      display: flex;
+      overflow-x: auto;
+      gap: 50px;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    .image-card {
+      flex: 0 0 200px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .image-card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .image-description {
+      padding: 20px;
+      padding-left: 20px;
+      text-align: center;
+    }
+    .image-card {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.1s ease;
+    }
+      </style>
+      <script>
+        // Set the countdown time in seconds
+        var countdownTime = 600; // 10 minutes
+        var countdownElement = document.getElementById('countdown');
+        function updateCountdown() {
+          var minutes = Math.floor(countdownTime / 60);
+          var seconds = countdownTime % 60;
+          // Add leading zero if needed
+          minutes = (minutes < 10) ? '0' + minutes : minutes;
+          seconds = (seconds < 10) ? '0' + seconds : seconds;
+          countdownElement.textContent = minutes + ':' + seconds;
+          // Check if the countdown has reached zero
+          if (countdownTime <= 0) {
+            countdownElement.textContent = "Time's up!";
+            clearInterval(countdownInterval);
+          } else {
+            countdownTime--;
+          }
+        }
+        // Update the countdown every second (1000 milliseconds)
+        var countdownInterval = setInterval(updateCountdown, 1000);
+        // Start the timer automatically
+        updateCountdown();
+
+        function zoomIn() {
+    document.getElementById("zoomImage").style.transform = "scale(1.2)";
+  }
+
+  function zoomOut() {
+    document.getElementById("zoomImage").style.transform = "scale(1)";
+  }
+      
